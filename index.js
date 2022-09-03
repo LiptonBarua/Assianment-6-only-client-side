@@ -10,7 +10,9 @@ const displayPortrel=(categorys)=>{
   toggleSpinner(true)
 const allItems = document.getElementById('all-items')
 categorys.forEach(element => {
-  
+ 
+  // const noMessage = document.getElementById('no-found-message')
+
 const div = document.createElement('div');
 div.innerHTML=`
 <div class="container">
@@ -42,27 +44,24 @@ cards.forEach(card=>{
     const cardDiv= document.createElement('div')
     cardDiv.innerHTML=`
    <div class="container">
-   <div class="card">
-   <img src="${card.thumbnail_url}" class="card-img-top" alt="...">
+   <div class="card pb-2">
+   <img src="${card.thumbnail_url}" class="img-fluid" alt="...">
    <div class="card-body">
      <h5 class="card-title">${card.title}</h5>
-     <p class="card-text">${card.details.length>150 ? card.details.slice(0,150)+'...': card.details}</p>
-    
-
-     <div class="d-flex">
-     <div>
-      <img class="rounded-circle" style="height: 56px; width: 56px;" src="${card.author.img}" alt="">
-     </div>
-     <div class="ms-2">
-     <small>${card.author.name ? card.author.name : "Name is not found"}<small><br>
-     <small>${card.author.published_date ? card.author.published_date : "Published date not is available"}<small>
-     </div>
-     <div>
-      <p ${card.rating.number}></p>
-     </div>
+     <p class="card-text">${card.details.length>100 ? card.details.slice(0,100)+'...': card.details}</p>
    </div>
 
+   <div class="d-flex">
+   <div>
+   <img class="rounded-circle ms-2" style="height: 56px; width: 56px;" src="${card.author.img}" alt="">
    </div>
+  <div class="ms-2">
+  <small>${card.author.name ? card.author.name : "Name is not found"}<small><br>
+  <small>${card.author.published_date ? card.author.published_date : "Published date not is available"}<small>
+  </div>
+ </div>
+   <h5 style="margin-left: 20px; margin-top: 16px;"><i class="fa-solid fa-eye"></i> ${card.total_view ? card.total_view : "Not a total View"}</h5>
+   <h5 style="margin-left: 20px; margin-top: 16px;" ><i class="fa-solid fa-arrow-right text-primary"></i></h5>
  </div>
    </div>
     `;
@@ -71,6 +70,11 @@ cards.forEach(card=>{
 toggleSpinner(false)
 }
 
+// .................Model Selection.............
+
+const displayModel = ()=>{
+  
+}
 
 const toggleSpinner =(isLoading)=>{
   const spinnerContainer=document.getElementById('spinner-container')
