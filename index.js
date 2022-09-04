@@ -69,7 +69,7 @@ cards.forEach(card=>{
   </div>
  </div>
    <h5 style="margin-left: 20px; margin-top: 16px;"><i class="fa-solid fa-eye"></i> ${card.total_view ? card.total_view : "Not a total View"}</h5>
-   <button onclick="displayModel('${card.category_id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+   <button onclick="displayModel('${card._id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Click Here
 </button>
  </div>
@@ -86,13 +86,25 @@ const displayModel=(news_id)=>{
  const url=` https://openapi.programming-hero.com/api/news/${news_id}`
  fetch(url)
  .then(res=>res.json())
- .then(data1=>displayModelCatagories(data1.data))
+ .then(data=>displayModelCatagories(data.data[0]))
 }
 
-const displayModelCatagories=card=>{
+const displayModelCatagories=(card)=>{
+  console.log(card);
 const modelBody=document.getElementById('model-body')
 modelBody.innerHTML=`
-<img src="${card.image_url}" alt="">
+<img src="${card.image_url}" alt="" class="img-fluid">
+<h3>${card.title}</h3>
+<p>${card.details.length>150? card.details.slice(0,150)+'...': card.details}</p>
+<div class="d-flex">
+<div>
+<img class="rounded-circle ms-2" style="height: 56px; width: 56px;" src="${card.author.img}" alt="">
+</div>
+<div class="ms-2">
+<small>${card.author.name ? card.author.name : "Name is not found"}<small><br>
+<small>${card.author.published_date ? card.author.published_date : "Published date not is available"}<small>
+</div>
+</div>
 `
 }
 
