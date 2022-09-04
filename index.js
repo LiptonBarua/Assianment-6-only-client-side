@@ -7,14 +7,14 @@ const loadPortel=()=>{
 loadPortel()
 
 const displayPortrel=(categorys)=>{
+  toggleSpinner(true)
+
 
 const allItems = document.getElementById('all-items')
+
 categorys.forEach(element => {
-  // document.getElementById("demo").innerHTML = element.length
- console.log(element);
 
-
-
+document.getElementById('demo').innerHTML= element.category_name.length;
 const div = document.createElement('div');
 div.innerHTML=`
 <div class="container">
@@ -43,7 +43,7 @@ const displayCard = (cards)=>{
 const cardContainer= document.getElementById('card-cantainer')
 
 cardContainer.innerHTML=''
-// spinnerContainer.classList.add('d-none')
+
 cards.forEach(card=>{
     const cardDiv= document.createElement('div')
     cardDiv.innerHTML=`
@@ -73,7 +73,7 @@ cards.forEach(card=>{
     `;
  cardContainer.appendChild(cardDiv)
 })
-// toggleSpinner(false)
+toggleSpinner(false)
 }
 
 // .................Model Selection.............
@@ -94,11 +94,11 @@ modelBody.innerHTML=`
 
 
 const toggleSpinner =(isLoading)=>{
-  
-  if(isLoading){
-  
+  const displayContainer = document.getElementById('spinner-container')
+  if(isLoading===true){
+    displayContainer.classList.remove('d-none')
   }
   else{
-   
+    displayContainer.classList.add('d-none')
   }
 }
