@@ -65,9 +65,8 @@ cards.forEach(card=>{
   </div>
  </div>
    <h5 style="margin-left: 20px; margin-top: 16px;"><i class="fa-solid fa-eye"></i> ${card.total_view ? card.total_view : "Not a total View"}</h5>
-   <h5 style="margin-left: 20px; margin-top: 16px;" ><i class="fa-solid fa-arrow-right text-primary"></i></h5>
    <button onclick="displayModel('${card.category_id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+  Click Here
 </button>
  </div>
    </div>
