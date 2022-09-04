@@ -90,7 +90,6 @@ const displayModel=(news_id)=>{
 }
 
 const displayModelCatagories=(card)=>{
-  console.log(card);
 const modelBody=document.getElementById('model-body')
 modelBody.innerHTML=`
 <img src="${card.image_url}" alt="" class="img-fluid">
