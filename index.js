@@ -19,7 +19,7 @@ const div = document.createElement('div');
 div.innerHTML=`
 <div class="container">
 <div class="row">
-<h5 onclick="loadCard('${element.category_id}')" style="margin-left: 100px;">${element.category_name}</h5>
+<h6 onclick="loadCard('${element.category_id}')" style="margin-left: 100px;">${element.category_name}</h6>
 
 </div>
 </div>
