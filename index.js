@@ -7,18 +7,11 @@ const loadPortel=()=>{
 loadPortel()
 
 const displayPortrel=(categorys)=>{
-// const totol = document.getElementById('no-found-message')
-// totol.textContent ='';
-// const totalDIV =document.createElement('div')
-// totalDIV.innerHTML =`
-// <p>${categorys.length}</p>
-// `
-// totol.appendChild(totalDIV)
-  // console.log(categorys.length);
+
 const allItems = document.getElementById('all-items')
 categorys.forEach(element => {
- let number=element.length
- console.log(number);
+  // document.getElementById("demo").innerHTML = element.length
+ console.log(element);
 
 
 
@@ -38,8 +31,7 @@ allItems.appendChild(div)
 
 
 const loadCard =(code)=>{
-  // const spinnerContainer=document.getElementById('spinner-container')
-  // spinnerContainer.classList.remove('d-none')
+
     const url=`https://openapi.programming-hero.com/api/news/category/${code}`
     fetch(url)
     .then(res=>res.json())
@@ -94,20 +86,20 @@ const displayModel=(news_id)=>{
  .then(data1=>displayModelCatagories(data1.data))
 }
 
-const displayModelCatagories=data=>{
+const displayModelCatagories=card=>{
 const modelBody=document.getElementById('model-body')
 modelBody.innerHTML=`
-<img src="${data.image_url}" alt="">
+<img src="${card.image_url}" alt="">
 `
 }
 
 
-// const toggleSpinner =(isLoading)=>{
+const toggleSpinner =(isLoading)=>{
   
-//   if(isLoading){
+  if(isLoading){
   
-//   }
-//   else{
+  }
+  else{
    
-//   }
-// }
+  }
+}
