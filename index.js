@@ -14,7 +14,7 @@ const allItems = document.getElementById('all-items')
 
 categorys.forEach(element => {
 
-document.getElementById('demo').innerHTML= element.category_name.length;
+
 const div = document.createElement('div');
 div.innerHTML=`
 <div class="container">
@@ -41,6 +41,10 @@ const loadCard =(code)=>{
 
 const displayCard = (cards)=>{
 const cardContainer= document.getElementById('card-cantainer')
+document.getElementById('demo').innerHTML= cards.length;
+if(cards.length===0){
+  alert('value is not found')
+}
 
 cardContainer.innerHTML=''
 
