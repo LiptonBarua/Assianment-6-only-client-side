@@ -7,11 +7,20 @@ const loadPortel=()=>{
 loadPortel()
 
 const displayPortrel=(categorys)=>{
-  toggleSpinner(true)
+// const totol = document.getElementById('no-found-message')
+// totol.textContent ='';
+// const totalDIV =document.createElement('div')
+// totalDIV.innerHTML =`
+// <p>${categorys.length}</p>
+// `
+// totol.appendChild(totalDIV)
+  // console.log(categorys.length);
 const allItems = document.getElementById('all-items')
 categorys.forEach(element => {
- 
-  // const noMessage = document.getElementById('no-found-message')
+ let number=element.length
+ console.log(number);
+
+
 
 const div = document.createElement('div');
 div.innerHTML=`
@@ -29,6 +38,8 @@ allItems.appendChild(div)
 
 
 const loadCard =(code)=>{
+  // const spinnerContainer=document.getElementById('spinner-container')
+  // spinnerContainer.classList.remove('d-none')
     const url=`https://openapi.programming-hero.com/api/news/category/${code}`
     fetch(url)
     .then(res=>res.json())
@@ -38,9 +49,10 @@ const loadCard =(code)=>{
 
 const displayCard = (cards)=>{
 const cardContainer= document.getElementById('card-cantainer')
+
 cardContainer.innerHTML=''
+// spinnerContainer.classList.add('d-none')
 cards.forEach(card=>{
-  console.log(card);
     const cardDiv= document.createElement('div')
     cardDiv.innerHTML=`
    <div class="container">
@@ -62,26 +74,40 @@ cards.forEach(card=>{
  </div>
    <h5 style="margin-left: 20px; margin-top: 16px;"><i class="fa-solid fa-eye"></i> ${card.total_view ? card.total_view : "Not a total View"}</h5>
    <h5 style="margin-left: 20px; margin-top: 16px;" ><i class="fa-solid fa-arrow-right text-primary"></i></h5>
+   <button onclick="displayModel('${card.category_id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
  </div>
    </div>
     `;
  cardContainer.appendChild(cardDiv)
 })
-toggleSpinner(false)
+// toggleSpinner(false)
 }
 
 // .................Model Selection.............
 
-const displayModel = ()=>{
-  
+const displayModel=(news_id)=>{
+ const url=` https://openapi.programming-hero.com/api/news/${news_id}`
+ fetch(url)
+ .then(res=>res.json())
+ .then(data1=>displayModelCatagories(data1.data))
 }
 
-const toggleSpinner =(isLoading)=>{
-  const spinnerContainer=document.getElementById('spinner-container')
-  if(isLoading){
-   spinnerContainer.classList.remove('d-none')
-  }
-  else{
-    spinnerContainer.classList.add('d-none')
-  }
+const displayModelCatagories=data=>{
+const modelBody=document.getElementById('model-body')
+modelBody.innerHTML=`
+<img src="${data.image_url}" alt="">
+`
 }
+
+
+// const toggleSpinner =(isLoading)=>{
+  
+//   if(isLoading){
+  
+//   }
+//   else{
+   
+//   }
+// }
